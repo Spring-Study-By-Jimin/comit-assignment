@@ -1,0 +1,47 @@
+spring:
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+  datasource:
+    url: jdbc:mysql://${DB_ADDRESS}:${DB_PORT}/comit_shop?useSSL=false&characterEncoding=UTF-8&serverTimezone=UTC
+    username: ${DB_USER}
+    password: ${DB_PW}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+    static-path-pattern: /static/**
+
+server:
+  port: 3000
+  address: 0.0.0.0
+
+logging:
+  level:
+    org.hibernate.SQL: debug
+    org.hibernate.type: trace
+    com.amazonaws.util.EC2MetadataUtils: error
+
+cloud:
+  aws:
+    credentials:
+      accessKey: ${AWS_ACCESS_KEY_ID}
+      secretKey: ${AWS_SECRET_ACCESS_KEY}
+    s3:
+      bucket: ${BUCKET_NAME}
+    region:
+      static: ap-northeast-2
+    stack:
+      auto: false
+
+product:
+  jwt-secret-key: ${JWT_SECRET_KEY}

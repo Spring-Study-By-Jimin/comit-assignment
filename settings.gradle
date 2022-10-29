@@ -1,0 +1,5 @@
+rootProject.name = 'shop'
+include 'shop-domain'
+include 'shop-application'
+include 'shop-infrastructure'
+
